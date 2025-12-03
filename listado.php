@@ -90,7 +90,7 @@
 
         <?php
         // Conexión a la base de datos MySQL
-     $conexion = mysqli_connect("sql102.infinityfree.com", "if0_40528875", "Juy8i71dkYQy7s", "interactivo_v2");
+     $conexion = mysqli_connect("sql102.infinityfree.com", "if0_40528875", "Juy8i71dkYQy7s", "if0_40528875_interactivo_v2");
 
         // Verificar la conexión
         if (!$conexion) {
