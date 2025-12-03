@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+   <!-- Programador: Miguel Alejandro Benítez Mancilla 5ºC MPR -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/confetti.css"> 
+  <style>
+    #header {
+      background-color: #8e918d;
+      border-radius: 10px;
+      padding: 5px;
+    }
+
+    .nav {
+      padding-right: 20px;
+    }
+
+    .nav ul li{
+      display:inline;
+      padding:0 10px
+    }
+
+    h1 {
+      text-align: center;
+      color: black;
+      font: arial;
+      margin: 8px;
+    }
+    #seccion {
+      display: flex;
+      flex-direction: row;
+      flex-wrap:wrap
+    }
+
+    .barra {
+      padding: 10px;
+      margin:5px;
+      background: rgb(66, 66, 66);
+      flex:3;
+      border-radius:10px;
+      display:flex;
+      flex-flow:column;
+      align-items:center;
+    }
+
+    .contenido {
+      padding: 10px;
+      border-radius:10px;
+      background: rgb(141, 141, 139);
+      margin:5px;
+      flex:1 150px;
+    }
+
+    .subcontenido2 {
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    #resultado {
+      display:flex;
+      flex-direction:column;
+      flex-wrap:wrap;
+      align-items: center;
+    }
+    
+    #footer {
+      background-color: white;
+      height: 100%;
+      text-align: center;
+      padding-top: 10px;
+      border-radius: 10px;
+      display:flex;
+      flex-flow:row;
+    }
+    .pie {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    #galeria{
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap; 
+      height:100px;
+    }
+
+    .proyecto{
+      
+      height:150px;
+      max-width:150px;
+      background-color:rgb(255, 255, 255);
+      border-radius:10px;
+      margin:10px;
+      flex:1 100px;
+    }
+
+    .barra a {
+      display:block;
+    }
+    #imagen-interactiva {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      background-image: url('images/mapa.png');
+      background-size: cover;
+      border: 2px solid #000;
+      border-radius: 10px;
+    }
+
+    #hotspot1 {
+      position: absolute;
+      top: 162px;
+      left: 315px;
+      width: 30px;
+      height: 30px;
+      background-color: #0015ff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #hotspot2 {
+      position: absolute;
+      top: 420px;
+      left: 30px;
+      width: 30px;
+      height: 30px;
+      background-color: rgb(0, 21, 255);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    #hotspot3 {
+      position: absolute;
+      top: 480px;
+      left: 30px;
+      width: 30px;
+      height: 30px;
+      background-color: rgb(0, 21, 255);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #hotspot4 {
+      position: absolute;
+      top: 385px;
+      left: 218px;
+      width: 30px;
+      height: 30px;
+      background-color: rgb(0, 21, 255);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #hotspot5 {
+      position: absolute;
+      top: 530px;
+      left: 100px;
+      width: 30px;
+      height: 30px;
+      background-color: rgb(255, 0, 0);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #hotspot6 {
+      position: absolute;
+      top: 450px;
+      left: 95px;
+      width: 30px;
+      height: 30px;
+      background-color: rgb(255, 0, 0);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+#hotspot7 {
+      position: absolute;
+      top: 162px;
+      left: 680px;
+      width: 30px;
+      height: 30px;
+      background-color: rgb(255, 0, 0);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+
+
+    .text-hotspot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgb(250, 250, 250);
+      font-weight: bold;
+    }
+
+    #instrucciones {
+      flex:1;
+      cursor: pointer;
+    }
+
+    #prueba {
+      flex:1;
+      cursor:pointer;
+    }
+#hotspot1, #hotspot2, #hotspot3, #hotspot4, #hotspot5, #hotspot6, #hotspot7 {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    #hotspot1 { top: 162px; left: 315px; background-color: #0015ff; }
+    #hotspot2 { top: 420px; left: 30px; background-color: rgb(0, 21, 255); }
+    #hotspot3 { top: 480px; left: 30px; background-color: rgb(0, 21, 255); }
+    #hotspot4 { top: 385px; left: 218px; background-color: rgb(0, 21, 255); }
+    #hotspot5 { top: 530px; left: 100px; background-color: rgb(255, 0, 0); }
+    #hotspot6 { top: 450px; left: 95px; background-color: rgb(255, 0, 0); }
+    #hotspot7 { top: 162px; left: 680px; background-color: rgb(255, 0, 0); }
+
+
+    #hotspot1:hover, #hotspot2:hover, #hotspot3:hover, #hotspot4:hover, #hotspot5:hover, #hotspot6:hover, #hotspot7:hover {
+      background-color: lightgray;
+      transform: scale(1.2);
+    }
+
+    .texto-rojo{
+            font-size:40px;
+            font-weight: bold;
+            color:red;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <div class="nav" style="text-align:center;">
+      <h3>BIENVENIDOS A "EJES VS ALIADOS"</h3>
+    </div>
+  </div>
+  <div id="seccion">
+    <div class="barra">
+        <div id="imagen-interactiva">
+          <div id="hotspot1"><span class="text-hotspot">EU</span></div>
+          <div id="hotspot2"><span class="text-hotspot">IBR</span></div>
+          <div id="hotspot3"><span class="text-hotspot">FRN</span></div>
+          <div id="hotspot4"><span class="text-hotspot">URSS</span></div>
+          <div id="hotspot5"><span class="text-hotspot">ITLY</span></div>
+          <div id="hotspot6"><span class="text-hotspot">GRMY</span></div>
+          <div id="hotspot7"><span class="text-hotspot">JPN</span></div>
+
+
+        </div>
+    </div>
+    <div class="contenido">
+      <div class="subcontenido1">
+        <h2 id="titulo-info">INSTRUCCIONES</h2>
+        <p id="texto-info">Haz clic en cada punto de la imagen para ver su explicación. Después de explorar el interactivo, completa el test de conocimientos.</p>
+      </div>
+      <div class="subcontenido2">
+        <div class="proyecto">
+          <img id="imagen-info" src="images/hotspotcursor.png" alt="Imagen info" style="width:100%; height:100%; border-radius:10px;">
+        </div>
+      </div>
+      <div id="resultado" class="invisible">
+        <h2>Tu resultado:</h2>
+        <span id="calif" class="texto-rojo">0/0</span>
+        <img id="imagen-resultado" width="200px" src="images/fallout.gif" />
+      </div>      
+    </div>
+  </div>
+ 
+    <div id="footer" style="display:flex; justify-content:center; align-items:center; gap:30px; padding:10px 0; background-color:#f2f2f2;">
+  
+  <div style="display:flex; flex-direction:column; align-items:center;">
+    <img src="images/instruccion.png" width="100px" alt="Instrucciones" style="border-radius:8px; margin-bottom:5px;">
+    <span style="font-family:Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#333;">Instrucciones</span>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center;">
+    <img src="images/test1.png" width="110px" alt="Test" style="border-radius:8px; margin-bottom:5px;">
+    <span style="font-family:Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#333;">Test</span>
+  </div>
+
+  <a href="formulario.php" style="display:flex; flex-direction:column; align-items:center; text-decoration:none; color:#333;">
+    <img src="images/f1.png" width="120px" alt="Formulario" style="border-radius:8px; margin-bottom:5px;">
+    <span style="font-family:Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center;">Click Aquí</span>
+  </a>
+
+</div>
+
+   
+
+  
+  </div>
+  <script type="text/javascript">
+    let puntaje = 0;
+    let pregunta1 = "";
+    let pregunta2 = "";
+    let pregunta3 = "";
+    let pregunta4 = "";
+    let pregunta5 = "";
+    let pregunta6 = "";
+    let pregunta7 = "";
+    let pregunta8 = "";
+    let pregunta9 = "";
+    let pregunta10 = "";
+    
+    
+
+    document.getElementById('hotspot1').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'EE.UU.';
+      document.getElementById('texto-info').textContent = 'Entró en la guerra en 1941, después del ataque a Pearl Harbor, y desempeñó un papel crucial en la derrota del Eje. Tras la guerra, emergió como una superpotencia mundial y lideró la creación de organizaciones internacionales. Hoy, EE.UU. es la economía global dominante, aunque enfrenta polarización política interna.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/eu.png');    
+    };
+
+    document.getElementById('hotspot2').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'REINO UNIDO';
+      document.getElementById('texto-info').textContent = 'Combatió intensamente contra el Eje, especialmente en Europa. Tras la derrota del Eje, perdió muchas de sus colonias y pasó por una reconstrucción económica. Actualmente, su economía es avanzada, pero los efectos del Brexit y los desafíos sociales continúan afectando al país.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/br.png');
+    };
+    document.getElementById('hotspot3').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'FRANCIA';
+      document.getElementById('texto-info').textContent = 'Fue invadida en 1940 y liberada en 1944. Tras la guerra, se reconstruyó con la ayuda del Plan Marshall y se consolidó como una potencia occidental. Hoy, Francia es una potencia económica global, aunque enfrenta tensiones sociales y económicas relacionadas con la inmigración y las reformas.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/fr.png');
+    };
+      document.getElementById('hotspot4').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'UNION SOVIETICA';
+      document.getElementById('texto-info').textContent = 'Clave en la derrota de Alemania en el frente oriental, se convirtió en una superpotencia después de la guerra. Sin embargo, colapsó en 1991, dando lugar a la Federación Rusa. Hoy, Rusia es un país con un gobierno autoritario y una economía centrada en los recursos naturales.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/urss.png');
+    };
+      document.getElementById('hotspot5').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'ITALIA';
+      document.getElementById('texto-info').textContent = 'Bajo Benito Mussolini, se unió al Eje en 1940, sufrió derrotas clave y fue invadida por los aliados en 1943. Mussolini fue arrestado y ejecutado en 1945. Tras la guerra, Italia se convirtió en república en 1946 y se consolidó como una democracia parlamentaria. Hoy, su economía es estable, pero enfrenta crisis políticas y desafíos demográficos.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/itly.png');
+    };
+      document.getElementById('hotspot6').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'ALEMANIA';
+      document.getElementById('texto-info').textContent = 'Bajo Hitler, invadió Polonia en 1939, iniciando la guerra, y utilizó la Blitzkrieg para conquistar rápidamente gran parte de Europa. Después de la derrota en 1945, Alemania fue dividida en dos zonas de ocupación: una controlada por los aliados (EE.UU., Reino Unido, Francia) y otra por la URSS. En 1990, tras la caída del Muro de Berlín, Alemania se reunificó. Hoy en día, es una democracia parlamentaria con la mayor economía de Europa, aunque enfrenta desafíos migratorios y el auge del populismo.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/grmy.png');
+    };
+      document.getElementById('hotspot7').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'JAPON';
+      document.getElementById('texto-info').textContent = 'Tras unirse al Eje en 1940, expandió su imperio en Asia y atacó Pearl Harbor. Fue derrotado después de los bombardeos atómicos de Hiroshima y Nagasaki. Tras la guerra, Japón fue ocupado por EE.UU., convirtiéndose en una democracia pacifista. En la actualidad, es una potencia tecnológica, pero enfrenta serios desafíos demográficos.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/jpn.png');
+    };
+
+    document.getElementById('instrucciones').onclick = function(){
+      document.getElementById('titulo-info').textContent = 'INSTRUCCIONES';
+      document.getElementById('texto-info').textContent = 'Haz clic en cada punto de la imagen para ver su explicación. Después de explorar el interactivo, completa el test de conocimientos.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/hotspot-cursor.png');
+    };
+
+    document.getElementById('prueba').onclick = function(){
+      alert("Bienvenidos a la prueba de conocimientos");
+      alert("Responde correctamente todas las preguntas para ganar");
+
+       if(pregunta1 = prompt("¿Quién inició la Segunda Guerra Mundial con la invasión de Polonia?")){
+
+            pregunta1 = pregunta1.trim();
+            
+        }
+        if (pregunta1.toLowerCase() === "hitler") {
+            alert("¡Correcto! Hitler fue el líder que desató el conflicto.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: Hitler.");
+        }
+
+        if(pregunta2 = prompt("¿En qué año se reunificó Alemania?")){
+
+            pregunta2 = pregunta2.trim();
+            
+        }
+        if (pregunta2.toLowerCase() === "1990") {
+            alert("¡Correcto! Alemania se reunificó en 1990.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: 1990.");
+        }
+
+         if(pregunta3 = prompt("¿Qué estrategia utilizó Alemania para invadir rápidamente Europa?")){
+
+            pregunta3 = pregunta3.trim();
+            
+        }
+        if (pregunta3.toLowerCase() === "blitzkrieg") {
+            alert("¡Correcto! La Blitzkrieg fue la táctica que utilizó Alemania.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: Blitzkrieg.");
+        }
+       
+        if(pregunta4 = prompt("¿Qué evento llevó a Japón a rendirse?")){
+
+            pregunta4 = pregunta4.trim();
+            
+        }
+        if (pregunta4.toLowerCase() === "bombardeos") {
+            alert("¡Correcto! Los bombardeos atómicos fueron el factor decisivo.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: Bombardeos atómicos.");
+        }
+       
+        if(pregunta5 = prompt("¿Qué organización internacional se creó después de la guerra?")){
+
+            pregunta5 = pregunta5.trim();
+            
+        }
+        if (pregunta5.toLowerCase() === "onu") {
+            alert("¡Correcto! La ONU fue creada tras el conflicto.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: ONU.");
+        }
+
+        if(pregunta6 = prompt("¿Cómo cambió Italia políticamente después de la Segunda Guerra Mundial?")){
+
+            pregunta6 = pregunta6.trim();
+            
+        }
+        if (pregunta6.toLowerCase() === "republica") {
+            alert("¡Correcto! Italia se convirtió en una república en 1946.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: República.");
+        }
+
+         if(pregunta7 = prompt("¿Qué superpotencia emergió tras la guerra?")){
+
+            pregunta7 = pregunta7.trim();
+            
+        }
+        if (pregunta7.toLowerCase() === "estados unidos") {
+            alert("¡Correcto! EE.UU. se consolidó como la superpotencia mundial.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: EE.UU.");
+        }
+
+          if(pregunta8 = prompt("¿Qué país fue ocupado por los aliados después de la guerra y se convirtió en república?")){
+
+            pregunta8 = pregunta8.trim();
+            
+        }
+        if (pregunta8.toLowerCase() === "italia") {
+            alert("¡Correcto! Italia fue ocupada y se convirtió en república.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: Italia.");
+        }
+
+         if(pregunta9 = prompt("¿Qué país jugó un papel crucial en el frente oriental contra Alemania?")){
+
+            pregunta9 = pregunta9.trim();
+            
+        }
+        if (pregunta9.toLowerCase() === "urss") {
+            alert("¡Correcto! La Unión Soviética fue decisiva en el frente oriental.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: Unión Soviética.");
+        }
+
+           if(pregunta10 = prompt("¿Qué país perdió muchas de sus colonias después de la guerra?")){
+
+            pregunta10 = pregunta10.trim();
+            
+        }
+        if (pregunta10.toLowerCase() === "reino unido") {
+            alert("¡Correcto! El Reino Unido perdió muchas de sus colonias.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: Reino Unido.");
+        }
+
+        if(puntaje >= 1) {
+            alert("¡Felicidades! Has respondido correctamente todas las preguntas.");
+            //document.getElementById("fiesta").setAttribute("class", "visible");
+            document.getElementById("calif").textContent = puntaje + "/10";
+            document.getElementById("resultado").setAttribute("class", "visible");
+            
+        } else {
+            alert("Has respondido " + puntaje + " preguntas correctamente. ¡Sigue intentando!");
+
+        }
+    };
+  </script>
+</body>
+</html>
